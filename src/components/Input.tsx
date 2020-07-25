@@ -28,7 +28,7 @@ interface IInputProps {
     value?: string
     type: string
     placeholder?: string
-    onChange?: () => void
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input: React.FC<IInputProps> = (props: IInputProps) => {

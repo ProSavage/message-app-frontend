@@ -18,7 +18,7 @@ const StyledButton = styled.button`
 
 interface IButtonProps {
     children?: React.ReactNode
-    onClick?: () => void
+    onClick?: (e: React.SyntheticEvent<HTMLButtonElement>) => void
 }
 
 
