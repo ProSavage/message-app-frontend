@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   font-weight: bold;
   padding: 10px 20px;
   background: rgb(109,217,217);
-  border: 2px solid #848484;
+  border: none;
   border-radius: 5px;
   
   &:focus {

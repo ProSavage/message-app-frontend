@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Input from "./Input";
 import Button from "./Button";
+import Form from "./Form";
+import Link from "./Link";
 
 
 const Wrapper = styled.div`
@@ -14,36 +16,20 @@ const Wrapper = styled.div`
   align-items: center;
 `
 
-const LoginForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 25px;
-  box-shadow: 0 10px 35px rgba(52, 52, 52, 0.13);
-  border-radius: 10px;
-`
-
-const FormHeader = styled.h3`
-  padding-bottom: 10px;
-`
-
-
 
 
 const LoginBody = () => {
-
-
     return (
         <Wrapper>
-            <LoginForm>
-                <FormHeader>Login</FormHeader>
+            <Form header={"Login"}>
                 <Input header={"Username"} type={"text"}/>
                 <Input header={"Password"} type={"password"}/>
                 <br/>
-                    <Button>
-                        Login
-                    </Button>
-
-            </LoginForm>
+                <Button>
+                    Login
+                </Button>
+                <Link to={"/signup"}>Or Signup</Link>
+            </Form>
         </Wrapper>
     )
 }
