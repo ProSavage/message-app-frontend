@@ -24,7 +24,7 @@ interface IFormProps {
 const Form: React.FC<IFormProps> = (props: IFormProps) => {
     return (
         <Container>
-            <FormHeader>Login</FormHeader>
+            <FormHeader>{props.header}</FormHeader>
             {props.children}
         </Container>
     )

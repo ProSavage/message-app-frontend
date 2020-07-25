@@ -1,6 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import LoginPage from "../page/LoginPage";
+import SignupPage from "../page/SignupPage";
 
 
 const PublicRouter = () => {
@@ -8,7 +9,7 @@ const PublicRouter = () => {
         <Router>
             <Switch>
                 <Route exact path={"/signup"}>
-                    <p>Sign up</p>
+                    <SignupPage/>
                 </Route>
                 <Route exact path={"/login"}>
                     <LoginPage/>
