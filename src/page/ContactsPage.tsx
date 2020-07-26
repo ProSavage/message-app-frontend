@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import ContactPreview from "../components/ContactPreview";
 import Navbar from "../components/Navbar";
+import {AccountTokenContainer} from "../context/AccountContext";
+import {messagingAPI} from "../AxiosInstance";
 
 
 const ContactsWrapper = styled.div`
@@ -12,14 +14,28 @@ const ContactsWrapper = styled.div`
 
 
 const ContactsPage = () => {
+
+    const accountTokenContainer = AccountTokenContainer.useContainer()
+
+    const [friends, setFriends] = useState([])
+
+    const renderContacts = () => {
+        return friends.map((friend: { username: string, message: string, time: number }) =>
+            <ContactPreview key={friend.username} name={friend.username} ago={new Date(friend.time)} message={friend.message}/>)
+    }
+
+    useEffect(() => {
+        messagingAPI().getContacts(accountTokenContainer.accountToken).then(res => {
+            setFriends(res.friends)
+        })
+    }, [])
+
     return (
         <>
-            <Navbar status={"Contacts"} showBack={false}/>
+            <Navbar status={"Contacts"} showBack={false} showAddFriends={true}/>
+
             <ContactsWrapper>
-                <ContactPreview name={"Ansh Gupta"} ago={new Date(new Date().getTime() - 12123)} message={"Yeah boii."}/>
-                <ContactPreview name={"Naman Gupta"} ago={new Date(new Date().getTime() - 12112123)} message={"Check out this meme."}/>
-                <ContactPreview name={"Shubh Gupta"} ago={new Date(new Date().getTime() - 521121233)} message={"I want to try this library out dude."}/>
-                <ContactPreview name={"Nishtha Gupta"} ago={new Date(new Date().getTime() - 1221121233)} message={"Check out my channel."}/>
+                {renderContacts()}
             </ContactsWrapper>
         </>
     )

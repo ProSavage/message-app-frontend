@@ -9,8 +9,14 @@ export const useAccountToken = () => {
 
 
     const [accountToken, setAccountToken] = useState()
+    const [username, setUsername] = useState()
 
-    return {setAccountToken, accountToken}
+    const storeAccountToken = (token: string) => {
+        setAccountToken(token)
+        window.localStorage.setItem("TOKEN", token)
+    }
+
+    return {setAccountToken, storeAccountToken, accountToken, username, setUsername}
 }
 
 export const AccountTokenContainer = createContainer(useAccountToken)

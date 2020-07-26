@@ -14,7 +14,7 @@ const LoginPage = () => {
 
     return (
         <Wrapper>
-            <Navbar status={"Please Login To Continue"} showBack={false}/>
+            <Navbar status={"Please Login To Continue"} showBack={false} showAddFriends={false}/>
             <LoginBody/>
         </Wrapper>
     )

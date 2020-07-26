@@ -4,6 +4,8 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+
 `
 
 const StyledInput = styled.input`
@@ -24,7 +26,7 @@ const StyledInput = styled.input`
 
 
 interface IInputProps {
-    header: string
+    header?: string
     value?: string
     type: string
     placeholder?: string
@@ -36,7 +38,8 @@ const Input: React.FC<IInputProps> = (props: IInputProps) => {
     return (
         <Container>
             <strong>{props.header}</strong>
-            <StyledInput onChange={props.onChange} value={props.value} type={props.type} placeholder={props.placeholder}/>
+            <StyledInput onChange={props.onChange} value={props.value} type={props.type}
+                         placeholder={props.placeholder}/>
         </Container>
     )
 }

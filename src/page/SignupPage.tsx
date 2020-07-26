@@ -15,7 +15,7 @@ const SignupPage = () => {
 
     return (
         <Wrapper>
-            <Navbar status={"Please Signup to get started"} showBack={false}/>
+            <Navbar status={"Please Signup to get started"} showBack={false} showAddFriends={false}/>
             <SignupBody/>
         </Wrapper>
     )

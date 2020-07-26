@@ -43,10 +43,10 @@ const LoginBody = () => {
         }
 
         authAPI().login(email, password).then(res => {
-            console.log(res)
             if (res.success) {
                 setStatus("Logged in!")
-                accountTokenContainer.setAccountToken(res.token)
+                accountTokenContainer.storeAccountToken(res.token)
+                accountTokenContainer.setUsername(res.username)
                 return
             } else {
                 setStatus(res.message)
