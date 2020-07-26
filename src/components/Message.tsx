@@ -8,9 +8,21 @@ const Wrapper = styled.div`
    margin: 10px;
  `
 
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+`
+
 const Title = styled.p`
   font-size: 12px;
   color: gray;
+`
+
+const Flag = styled.p`
+  font-size: 10px;
+  color: black;
 `
 
 const MessageWrapper = styled.div`
@@ -21,7 +33,8 @@ const MessageWrapper = styled.div`
 
 interface IMessageProps {
     title: string,
-    message: string
+    message: string,
+    flag: string
 }
 
 const Message: React.FC<IMessageProps> = (props: IMessageProps) => {
@@ -29,7 +42,10 @@ const Message: React.FC<IMessageProps> = (props: IMessageProps) => {
 
     return (
         <Wrapper>
-            <Title>{props.title}</Title>
+            <TitleContainer>
+                <Title>{props.title}</Title>
+                <Flag>{props.flag}</Flag>
+            </TitleContainer>
             <MessageWrapper>
                 <p>{props.message}</p>
             </MessageWrapper>

@@ -50,7 +50,7 @@ const MessagePage: React.FC = () => {
 
     useEffect(() => {
         const socket = socketContainer.socket
-        socket.on("messaged", (messageData: {from: string, message: string}) => {
+        socket.on("messaged", (messageData: {from: string, message: string, flag: string}) => {
             console.log("Got a message!")
             if (messageData.from !== params.name) {
                 console.log("Got message from", params.name, "but not on the right page to display.")
@@ -58,12 +58,13 @@ const MessagePage: React.FC = () => {
             }
             setConversation(conversation.concat({
                 you: false,
-                message: messageData.message
+                message: messageData.message,
+                flag: messageData.flag
             }))
         })
     })
 
-    const [conversation, setConversation] = useState([] as {you: boolean, message: string}[])
+    const [conversation, setConversation] = useState([] as {you: boolean, message: string, flag: string}[])
     const [message, setMessage] = useState("");
 
     return (
@@ -78,7 +79,8 @@ const MessagePage: React.FC = () => {
                         const socket = socketContainer.socket
                         setConversation(conversation.concat({
                             you: true,
-                            message
+                            message,
+                            flag: ""
                         }))
                         socket.emit("message", {
                             senderToken: accountTokenContainer.accountToken,

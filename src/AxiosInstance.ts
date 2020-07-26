@@ -31,8 +31,8 @@ const authenticatedAxios = (token: string) => {
 }
 
 
-const authAxios = axios.create({
-    baseURL: API_BASE_URL
+const authAxios = () => axios.create({
+    baseURL: "http://localhost:5000/"
 })
 
 export const messagingAPI = () => {
@@ -65,20 +65,20 @@ export const messagingAPI = () => {
 export const authAPI = () => {
     return {
         validate: async (token: string) => {
-            const req = await authAxios.post("/auth/validate", {
+            const req = await authAxios().post("/auth/validate", {
                 token
             })
             return req.data
         },
         login: async (email: string, password: string) => {
-            const req = await authAxios.post("/auth/login", {
+            const req = await authAxios().post("/auth/login", {
                 email,
                 password
             })
             return req.data;
         },
         signup: async (username: string, email: string, password: string) => {
-            const req = await authAxios.post("/auth/signup", {
+            const req = await authAxios().post("/auth/signup", {
                 username,
                 email,
                 password

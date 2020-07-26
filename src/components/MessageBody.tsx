@@ -4,7 +4,7 @@ import Message from "./Message";
 
 
 interface IMessageBodyProps {
-    messages: {you: boolean, message: string}[]
+    messages: {you: boolean, message: string, flag: string}[]
     recipient: string
 }
 
@@ -35,13 +35,13 @@ const MessageBody: React.FC<IMessageBodyProps> = (props: IMessageBodyProps) => {
             if (message.you) {
                 return (
                     <MessageFromYou>
-                       <Message title={"You:"} message={message.message}/>
+                       <Message title={"You:"} message={message.message} flag={message.flag}/>
                     </MessageFromYou>
                 )
             } else {
                 return (
                     <MessageFromRecipient>
-                        <Message title={props.recipient + ":"} message={message.message}/>
+                        <Message title={props.recipient + ":"} message={message.message} flag={message.flag}/>
                     </MessageFromRecipient>
                 )
             }
